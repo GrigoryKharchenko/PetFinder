@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="16dp">
+
+    <ImageView
+        android:id="@+id/ivPhotoPet"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvTypePet"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="@string/type_pet"
+        app:layout_constraintBottom_toTopOf="@id/tvBreedsPet"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/ivPhotoPet"
+        app:layout_constraintTop_toTopOf="@id/ivPhotoPet" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvBreedsPet"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
+        android:text="@string/breeds_pet"
+        app:layout_constraintBottom_toTopOf="@id/tvAgePet"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/ivPhotoPet"
+        app:layout_constraintTop_toBottomOf="@id/tvTypePet" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvAgePet"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
+        android:text="@string/age_pet"
+        app:layout_constraintBottom_toTopOf="@id/tvNamePet"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/ivPhotoPet"
+        app:layout_constraintTop_toBottomOf="@id/tvBreedsPet" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvNamePet"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
+        android:text="@string/name_pet"
+        app:layout_constraintBottom_toBottomOf="@+id/ivPhotoPet"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/ivPhotoPet"
+        app:layout_constraintTop_toBottomOf="@id/tvAgePet" />
+
+    <androidx.viewpager.widget.ViewPager
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="4dp"
+        android:background="@color/black"
+        app:layout_constraintTop_toBottomOf="@id/tvNamePet" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

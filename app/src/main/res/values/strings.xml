@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">PetFinder</string>
+    <string name="type_pet">Type: %1$s</string>
+    <string name="breeds_pet">Breeds: %1$s</string>
+    <string name="age_pet">Age: %1$s</string>
+    <string name="name_pet">Name:%1$s</string>
 </resources>
