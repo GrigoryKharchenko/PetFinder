@@ -14,7 +14,7 @@ interface ListPetApi {
         @Field("client_secret") clientSecret: String
     )
 
-    @GET("v2/animals?type=dog&page=50")
+    @GET("v2/animals?type=dog&page=40")
     suspend fun getListPets(): PetResponse
 }
 

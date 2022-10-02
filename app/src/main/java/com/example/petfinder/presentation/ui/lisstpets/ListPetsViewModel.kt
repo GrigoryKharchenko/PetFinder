@@ -19,7 +19,6 @@ class ListPetsViewModel @Inject constructor(private val listPetApi: ListPetApi) 
     private fun getPhoto() {
         viewModelScope.launch {
             runCatching {
-                listPetApi.sendToken(Api.GRANT_TYPE, Api.CLIENT_ID, Api.CLIENT_SECRET)
                 listPetApi.getListPets()
             }.onSuccess { photoResponse ->
                 _photoModelFlow.emit(photoResponse.mapToPhotoModel())

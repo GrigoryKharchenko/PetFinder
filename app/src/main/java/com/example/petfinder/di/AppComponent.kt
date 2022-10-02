@@ -2,9 +2,7 @@ package com.example.petfinder.di
 
 import android.content.Context
 import com.example.petfinder.PetFinderApp
-import com.example.petfinder.di.module.ActivityModule
-import com.example.petfinder.di.module.FragmentModule
-import com.example.petfinder.di.module.RetrofitModule
+import com.example.petfinder.di.module.*
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjectionModule
@@ -19,7 +17,10 @@ import javax.inject.Singleton
         AndroidInjectionModule::class,
         ActivityModule::class,
         FragmentModule::class,
-        RetrofitModule::class
+        RetrofitModule::class,
+        PreferenceModule::class,
+        ServiceModule::class,
+        RepositoryModule::class,
     ]
 )
 interface AppComponent : AndroidInjector<PetFinderApp> {
