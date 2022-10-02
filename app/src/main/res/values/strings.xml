@@ -4,4 +4,7 @@
     <string name="breeds_pet">Breeds: %1$s</string>
     <string name="age_pet">Age: %1$s</string>
     <string name="name_pet">Name:%1$s</string>
+    <string name="gender_pet">Gender: %1$s</string>
+    <string name="size_pet">Size: %1$s</string>
+    <string name="tags_pet">Tags: %1$s</string>
 </resources>

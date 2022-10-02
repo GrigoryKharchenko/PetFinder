@@ -1,5 +1,6 @@
 package com.example.petfinder.domain.response
 
+import com.example.petfinder.domain.interceptor.TokenModel
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
@@ -12,9 +13,9 @@ interface ListPetApi {
         @Field("grant_type") grantType: String,
         @Field("client_id") clientId: String,
         @Field("client_secret") clientSecret: String
-    )
+    ): TokenModel
 
-    @GET("v2/animals?type=dog&page=50")
+    @GET("v2/animals?type=dog&page=40")
     suspend fun getListPets(): PetResponse
 }
 

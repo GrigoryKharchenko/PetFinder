@@ -6,7 +6,9 @@ import androidx.recyclerview.widget.ListAdapter
 import com.example.petfinder.databinding.ItemInfoPetBinding
 import com.example.petfinder.presentation.ui.model.PetModel
 
-class ListPetsAdapter : ListAdapter<PetModel, ListPetsViewHolder>(ListPetsDiffUtil()) {
+class ListPetsAdapter(
+    val onOpenClick: (PetModel) -> Unit
+) : ListAdapter<PetModel, ListPetsViewHolder>(ListPetsDiffUtil()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListPetsViewHolder {
         val itemView = ItemInfoPetBinding.inflate(
             LayoutInflater.from(parent.context),
@@ -17,6 +19,6 @@ class ListPetsAdapter : ListAdapter<PetModel, ListPetsViewHolder>(ListPetsDiffUt
     }
 
     override fun onBindViewHolder(holder: ListPetsViewHolder, position: Int) {
-        holder.bind(getItem(position))
+        holder.bind(getItem(position), onOpenClick)
     }
 }
