@@ -50,7 +50,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="4dp"
-        android:text="@string/breeds_pet"
+        tools:text="@string/breeds_pet"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvTypePet" />
@@ -61,7 +61,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:layout_marginHorizontal="16dp"
-        android:text="@string/age_pet"
+        tools:text="@string/age_pet"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvBreedsPet" />
@@ -72,7 +72,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:layout_marginHorizontal="16dp"
-        android:text="@string/name_pet"
+        tools:text="@string/name_pet"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvAgePet" />
@@ -82,7 +82,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
-        android:text="@string/gender_pet"
+        tools:text="@string/gender_pet"
         android:layout_marginHorizontal="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -93,7 +93,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
-        android:text="@string/size_pet"
+        tools:text="@string/size_pet"
         android:layout_marginHorizontal="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -105,7 +105,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="4dp"
-        android:text="@string/tags_pet"
+        tools:text="@string/tags_pet"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvSizePet" />

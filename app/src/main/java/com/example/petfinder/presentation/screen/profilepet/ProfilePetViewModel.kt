@@ -1,4 +1,4 @@
-package com.example.petfinder.presentation.ui.profilepet
+package com.example.petfinder.presentation.screen.profilepet
 
 import androidx.lifecycle.ViewModel
 import javax.inject.Inject

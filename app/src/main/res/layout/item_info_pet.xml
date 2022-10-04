@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="?attr/selectableItemBackground">
 
     <ImageView
@@ -20,7 +21,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="16dp"
-        android:text="@string/type_pet"
+        tools:text="@string/type_pet"
         app:layout_constraintBottom_toTopOf="@id/tvBreedsPet"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/ivPhotoPet"
@@ -33,7 +34,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="16dp"
-        android:text="@string/breeds_pet"
+        tools:text="@string/breeds_pet"
         app:layout_constraintBottom_toTopOf="@id/tvAgePet"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/ivPhotoPet"
@@ -46,7 +47,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="16dp"
-        android:text="@string/age_pet"
+        tools:text="@string/age_pet"
         app:layout_constraintBottom_toTopOf="@id/tvNamePet"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/ivPhotoPet"
@@ -58,9 +59,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="4dp"
-
         android:layout_marginEnd="16dp"
-        android:text="@string/name_pet"
+        tools:text="@string/name_pet"
         app:layout_constraintBottom_toBottomOf="@id/ivPhotoPet"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/ivPhotoPet"

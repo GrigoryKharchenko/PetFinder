@@ -1,10 +1,10 @@
-package com.example.petfinder.presentation.ui.lisstpets.adapter
+package com.example.petfinder.presentation.screen.lisstpets.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import com.example.petfinder.databinding.ItemInfoPetBinding
-import com.example.petfinder.presentation.ui.model.PetModel
+import com.example.petfinder.presentation.screen.model.PetModel
 
 class ListPetsAdapter(
     val onOpenClick: (PetModel) -> Unit

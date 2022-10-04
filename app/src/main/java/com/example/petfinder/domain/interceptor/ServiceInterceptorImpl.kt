@@ -5,7 +5,6 @@ import okhttp3.Response
 import javax.inject.Inject
 
 class ServiceInterceptorImpl @Inject constructor(
-    //TODO заменить на репо
     private val sharedPreference: AuthorizationPreference
 ) : ServiceInterceptor {
     override fun addInterceptorToken(chain: Interceptor.Chain): Response {

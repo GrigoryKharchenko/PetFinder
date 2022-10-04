@@ -1,10 +1,11 @@
 package com.example.petfinder.domain.response
 
+import androidx.annotation.IntRange
 import com.example.petfinder.domain.interceptor.TokenModel
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.GET
-import retrofit2.http.POST
+import com.example.petfinder.domain.response.Api.DEFAULT_PAGE_SIZE
+import com.example.petfinder.domain.response.Api.MAX_PAGE_SIZE
+
+import retrofit2.http.*
 
 interface ListPetApi {
     @POST("https://api.petfinder.com/v2/oauth2/token")
@@ -15,8 +16,14 @@ interface ListPetApi {
         @Field("client_secret") clientSecret: String
     ): TokenModel
 
-    @GET("v2/animals?type=dog&page=40")
-    suspend fun getListPets(): PetResponse
+    @GET("v2/animals")
+    suspend fun getListPets(
+        @Query("page") @IntRange(from = 1) page: Int = 1,
+        @Query("limit") @IntRange(
+            from = 1,
+            to = MAX_PAGE_SIZE.toLong()
+        ) limit: Int = DEFAULT_PAGE_SIZE,
+    ): PetResponse
 }
 
 object Api {
@@ -24,4 +31,6 @@ object Api {
     const val CLIENT_ID = "HHNgfYe55nQ0s2QNwWaLeOJ20tqNyXiRkdaz5PKboJ37hBk7EG"
     const val CLIENT_SECRET = "UDqV457aVBjeIgwEolvDTC5jMFVMt7e7y6QgxrxA"
     const val GRANT_TYPE = "client_credentials"
+    const val DEFAULT_PAGE_SIZE = 20
+    const val MAX_PAGE_SIZE = 100
 }

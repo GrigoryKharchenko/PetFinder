@@ -1,16 +1,21 @@
-package com.example.petfinder.presentation.ui.lisstpets
+package com.example.petfinder.presentation.screen.lisstpets
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
+import androidx.core.widget.doOnTextChanged
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import com.example.petfinder.R
 import com.example.petfinder.databinding.FragmentListPetsBinding
 import com.example.petfinder.presentation.base.BaseFragment
-import com.example.petfinder.presentation.ui.lisstpets.adapter.ListPetsAdapter
-import com.example.petfinder.presentation.ui.model.PetModel
-import com.example.petfinder.presentation.ui.profilepet.ProfilePetFragment
+import com.example.petfinder.presentation.screen.lisstpets.adapter.ListPetsAdapter
+import com.example.petfinder.presentation.screen.model.PetModel
+import com.example.petfinder.presentation.screen.profilepet.ProfilePetFragment
+import kotlinx.coroutines.launch
 
 class ListPetsFragment : BaseFragment<ListPetsViewModel>() {
 
@@ -33,15 +38,22 @@ class ListPetsFragment : BaseFragment<ListPetsViewModel>() {
         super.onViewCreated(view, savedInstanceState)
         with(binding) {
             rvListPets.adapter = adapter
-            //TODO fix subscribe
-            lifecycleScope.launchWhenStarted {
-                viewModel.petFlow.collect(adapter::submitList)
-            }
-            tilSearchPet.setEndIconOnClickListener {
-                viewModel.findPets(etSearchPet.text.toString())
+            etSearchPet.doOnTextChanged { text, _, _, _ ->
+                viewModel.setQuery(text?.toString() ?: "")
             }
             swipeRefresh.setOnRefreshListener {
                 viewModel.getListPets()
+                swipeRefresh.isRefreshing = false
+            }
+        }
+        with(viewModel) {
+            viewLifecycleOwner.lifecycleScope.launch {
+                viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                    petFlow.collect { listPetModel ->
+                        adapter.submitList(listPetModel)
+                        binding.flProgress.isVisible = false
+                    }
+                }
             }
         }
     }

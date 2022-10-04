@@ -1,11 +1,10 @@
-package com.example.petfinder.presentation.ui.lisstpets.adapter
+package com.example.petfinder.presentation.screen.lisstpets.adapter
 
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.example.petfinder.R
 import com.example.petfinder.databinding.ItemInfoPetBinding
-import com.example.petfinder.presentation.ui.model.PetModel
+import com.example.petfinder.extensions.loadPhoto
+import com.example.petfinder.presentation.screen.model.PetModel
 
 class ListPetsViewHolder(private val binding: ItemInfoPetBinding) :
     RecyclerView.ViewHolder(binding.root) {
@@ -21,11 +20,7 @@ class ListPetsViewHolder(private val binding: ItemInfoPetBinding) :
             root.setOnClickListener {
                 onOpenClick(petModel)
             }
-            Glide.with(ivPhotoPet)
-                .load(petModel.photo)
-                .placeholder(R.drawable.photo)
-                .transform(RoundedCorners(48))
-                .into(ivPhotoPet)
+            ivPhotoPet.loadPhoto(petModel.photo)
         }
     }
 }
