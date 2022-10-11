@@ -2,10 +2,10 @@ package com.example.petfinder.di.module
 
 import androidx.lifecycle.ViewModel
 import com.example.petfinder.di.ViewModelKey
-import com.example.petfinder.presentation.ui.lisstpets.ListPetsFragment
-import com.example.petfinder.presentation.ui.lisstpets.ListPetsViewModel
-import com.example.petfinder.presentation.ui.profilepet.ProfilePetFragment
-import com.example.petfinder.presentation.ui.profilepet.ProfilePetViewModel
+import com.example.petfinder.presentation.screen.lisstpets.ListPetsFragment
+import com.example.petfinder.presentation.screen.lisstpets.ListPetsViewModel
+import com.example.petfinder.presentation.screen.profilepet.ProfilePetFragment
+import com.example.petfinder.presentation.screen.profilepet.ProfilePetViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.android.ContributesAndroidInjector

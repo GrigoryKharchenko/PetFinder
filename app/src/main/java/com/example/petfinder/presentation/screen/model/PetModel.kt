@@ -1,4 +1,4 @@
-package com.example.petfinder.presentation.ui.model
+package com.example.petfinder.presentation.screen.model
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize

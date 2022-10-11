@@ -1,5 +1,7 @@
-package com.example.petfinder.domain.interceptor
+package com.example.petfinder.data.service
 
+import com.example.petfinder.data.datastore.TokenDataStore
+import com.example.petfinder.domain.repository.NetworkRepository
 import dagger.Lazy
 import kotlinx.coroutines.runBlocking
 import okhttp3.Authenticator
@@ -10,13 +12,14 @@ import javax.inject.Inject
 
 class TokenAuthenticatorImpl @Inject constructor(
     private val networkRepository: Lazy<NetworkRepository>,
-    private val authorizationPreference: AuthorizationPreference
+    private val tokenDataStore: TokenDataStore
 ) : Authenticator {
     override fun authenticate(route: Route?, response: Response): Request? {
         val autoRepo = networkRepository.get() ?: return null
         return runBlocking {
             val tokenResponse = autoRepo.getNetworkToken().token
-            authorizationPreference.token = tokenResponse
+            tokenDataStore.saveToken(tokenResponse)
+
             response.request.newBuilder().header("Authorization", "Bearer $tokenResponse").build()
         }
     }

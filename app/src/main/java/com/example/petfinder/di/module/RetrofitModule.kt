@@ -1,9 +1,9 @@
 package com.example.petfinder.di.module
 
 import com.example.petfinder.di.PetFinderRetrofit
-import com.example.petfinder.domain.interceptor.ServiceInterceptor
-import com.example.petfinder.domain.response.Api
-import com.example.petfinder.domain.response.ListPetApi
+import com.example.petfinder.domain.service.PetFinderInterceptor
+import com.example.petfinder.data.network.Api
+import com.example.petfinder.data.network.ListPetApi
 import dagger.Module
 import dagger.Provides
 import okhttp3.Authenticator
@@ -19,13 +19,13 @@ object RetrofitModule {
     @Singleton
     @Provides
     fun httpClient(
-        serviceInterceptor: ServiceInterceptor,
+        petFinderInterceptor: PetFinderInterceptor,
         authenticator: Authenticator
     ): OkHttpClient =
         OkHttpClient.Builder()
             .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
             .addInterceptor { chain ->
-                serviceInterceptor.addInterceptorToken(chain)
+                petFinderInterceptor.addInterceptorToken(chain)
             }
             .authenticator(authenticator)
             .build()
@@ -34,7 +34,8 @@ object RetrofitModule {
     @Provides
     @PetFinderRetrofit
     fun listPetFinderClient(okHttpClient: OkHttpClient): Retrofit =
-        Retrofit.Builder()
+        Retrofit
+            .Builder()
             .baseUrl(Api.BASE_URL)
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create())
