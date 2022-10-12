@@ -39,7 +39,7 @@
                 android:text="@string/option_cat" />
 
             <com.google.android.material.chip.Chip
-                android:id="@+id/filterTypeOther"
+                android:id="@+id/filterTypeAllAnimal"
                 style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

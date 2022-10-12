@@ -4,11 +4,7 @@ import androidx.annotation.IntRange
 import com.example.petfinder.data.network.Api.FIRST_PAGE
 import com.example.petfinder.data.response.PetResponse
 import com.example.petfinder.data.response.TokenResponse
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Query
+import retrofit2.http.*
 
 interface ListPetApi {
     @POST("https://api.petfinder.com/v2/oauth2/token")
@@ -21,9 +17,13 @@ interface ListPetApi {
 
     @GET("v2/animals")
     suspend fun getListPets(
-        @Query("page") @IntRange(from = 1) page: Int = FIRST_PAGE,
-        @Query("type") typeAnimal: String?,
-        @Query("gender") genderAnimal: String?
+        @Query("page")
+        @IntRange(from = 1)
+        page: Int = FIRST_PAGE,
+        @Query("type")
+        type: String? = null,
+        @Query("gender")
+        gender: String? = null
     ): PetResponse
 }
 

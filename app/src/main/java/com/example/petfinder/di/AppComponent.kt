@@ -18,7 +18,7 @@ import javax.inject.Singleton
         ActivityModule::class,
         FragmentModule::class,
         RetrofitModule::class,
-        DataStoreModule::class,
+        PreferenceManagerModule::class,
         ServiceModule::class,
         RepositoryModule::class,
         PagingModule::class,

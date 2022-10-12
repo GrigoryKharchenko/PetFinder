@@ -13,7 +13,7 @@ class PetsFinderPageSource @Inject constructor(
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, PetModel> {
         val page = params.key ?: 1
         return runCatching {
-            petPagedListRepository.getListPets(page,null,null)
+            petPagedListRepository.getListPets(page)
         }.fold(
             onSuccess = { animal ->
                 LoadResult.Page(

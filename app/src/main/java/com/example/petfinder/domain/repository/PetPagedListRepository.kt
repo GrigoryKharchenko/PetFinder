@@ -4,8 +4,6 @@ import com.example.petfinder.presentation.screen.model.PetModel
 
 interface PetPagedListRepository {
     suspend fun getListPets(
-        page: Int,
-        type: String?,
-        gender: String?
+        page: Int
     ): List<PetModel>
 }

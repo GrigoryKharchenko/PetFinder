@@ -5,11 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
-import androidx.core.widget.doOnTextChanged
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
 import com.example.petfinder.R
 import com.example.petfinder.databinding.FragmentListPetsBinding
+import com.example.petfinder.domain.enumeration.GenderAnimal
+import com.example.petfinder.domain.enumeration.TypeAnimal
 import com.example.petfinder.extensions.launchWhenStarted
 import com.example.petfinder.presentation.base.BaseFragment
 import com.example.petfinder.presentation.screen.lisstpets.adapter.ListPetsAdapter
@@ -38,7 +39,11 @@ class ListPetsFragment : BaseFragment<ListPetsViewModel>() {
         super.onViewCreated(view, savedInstanceState)
         with(binding) {
             rvListPets.adapter = adapter
-            etSearchPet.doOnTextChanged { text, _, _, _ ->
+            swipeRefresh.setOnRefreshListener {
+                adapter.refresh()
+            }
+            adapter.addLoadStateListener { state ->
+                flProgress.isVisible = state.refresh == LoadState.Loading
             }
         }
         with(viewModel) {
@@ -47,11 +52,74 @@ class ListPetsFragment : BaseFragment<ListPetsViewModel>() {
                 binding.swipeRefresh.isRefreshing = false
             }.launchWhenStarted(lifecycleScope, viewLifecycleOwner.lifecycle)
         }
-        binding.swipeRefresh.setOnRefreshListener {
-            adapter.refresh()
+        selectFilter()
+        setTypePet()
+        setGenderPet()
+    }
+
+    private fun setTypePet() {
+        with(binding) {
+            viewModel.petTypeFlow.onEach { typeAnimal ->
+                when (typeAnimal) {
+                    TypeAnimal.CAT ->
+                        filterTypeCat.isChecked = true
+                    TypeAnimal.DOG ->
+                        filterTypeDog.isChecked = true
+                    TypeAnimal.ANIMAL ->
+                        filterTypeAllAnimal.isChecked = true
+                    TypeAnimal.EMPTY -> {
+                        filterTypeAllAnimal.isChecked = false
+                        filterTypeCat.isChecked = false
+                        filterTypeDog.isChecked = false
+                    }
+                }
+                adapter.refresh()
+            }.launchWhenStarted(lifecycleScope, viewLifecycleOwner.lifecycle)
         }
-        adapter.addLoadStateListener { state ->
-            binding.flProgress.isVisible = state.refresh == LoadState.Loading
+    }
+
+    private fun setGenderPet() {
+        with(binding) {
+            viewModel.petGenderFlow.onEach { genderAnimal ->
+                when (genderAnimal) {
+                    GenderAnimal.MALE -> {
+                        filterGenderMale.isChecked = true
+                    }
+                    GenderAnimal.FEMALE -> {
+                        filterGenderFemale.isChecked = true
+                    }
+                    GenderAnimal.EMPTY -> {
+                        filterGenderMale.isChecked = false
+                        filterGenderFemale.isChecked = false
+                    }
+                }
+                adapter.refresh()
+            }.launchWhenStarted(lifecycleScope, viewLifecycleOwner.lifecycle)
+        }
+    }
+
+    private fun selectFilter() {
+        with(binding) {
+            filterTypeDog.setOnClickListener {
+                viewModel.changePetType(TypeAnimal.DOG)
+                viewModel.changePetGender(GenderAnimal.EMPTY)
+            }
+            filterTypeAllAnimal.setOnClickListener {
+                viewModel.changePetType(TypeAnimal.ANIMAL)
+                viewModel.changePetGender(GenderAnimal.EMPTY)
+            }
+            filterTypeCat.setOnClickListener {
+                viewModel.changePetType(TypeAnimal.CAT)
+                viewModel.changePetGender(GenderAnimal.EMPTY)
+            }
+            filterGenderMale.setOnClickListener {
+                viewModel.changePetGender(GenderAnimal.MALE)
+                viewModel.changePetType(TypeAnimal.EMPTY)
+            }
+            filterGenderFemale.setOnClickListener {
+                viewModel.changePetGender(GenderAnimal.FEMALE)
+                viewModel.changePetType(TypeAnimal.EMPTY)
+            }
         }
     }
 

@@ -9,7 +9,7 @@
     <string name="tags_pet">Tags: %1$s</string>
     <string name="option_dog">Dog</string>
     <string name="option_cat">Cat</string>
-    <string name="option_all_pets">All</string>
+    <string name="option_all_pets">Animal</string>
     <string name="gender_male">Male</string>
     <string name="gender_female">Female</string>
 </resources>
