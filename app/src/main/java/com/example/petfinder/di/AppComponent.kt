@@ -18,9 +18,10 @@ import javax.inject.Singleton
         ActivityModule::class,
         FragmentModule::class,
         RetrofitModule::class,
-        PreferenceModule::class,
+        PreferenceManagerModule::class,
         ServiceModule::class,
         RepositoryModule::class,
+        PagingModule::class,
     ]
 )
 interface AppComponent : AndroidInjector<PetFinderApp> {

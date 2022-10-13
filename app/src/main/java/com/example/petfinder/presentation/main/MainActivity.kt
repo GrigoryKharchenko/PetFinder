@@ -3,7 +3,7 @@ package com.example.petfinder.presentation.main
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.petfinder.R
-import com.example.petfinder.presentation.ui.lisstpets.ListPetsFragment
+import com.example.petfinder.presentation.screen.lisstpets.ListPetsFragment
 import dagger.android.AndroidInjection
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
